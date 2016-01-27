@@ -5,6 +5,14 @@ import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import ejs from 'gulp-ejs';
 import webserver from 'gulp-webserver';
+import prettify from 'gulp-jsbeautifier';
+
+//jsonをテンプレートフォルダに
+gulp.task('json', () => {
+  gulp.src('./data/**/*.json')
+    .pipe(prettify({json: {indent_size: 1, indent_char: '\t'}}))
+    .pipe(gulp.dest('./template/data'))
+});
 
 gulp.task('webserver', () => {
   gulp.src('template')
@@ -28,7 +36,6 @@ gulp.task('js', () => {
 
 gulp.task('watch', () => {
   gulp.watch('./ejs/**/*.ejs', ['ejs']);
-  gulp.watch('./css/**/*.css', ['css']);
   gulp.watch('./js/**/*.js', ['js']);
 });
 
@@ -38,4 +45,4 @@ gulp.task('ejs', () => {
   .pipe(gulp.dest("./template"))
 })
 
-gulp.task('default', ['js', 'ejs', 'webserver', 'watch']);
+gulp.task('default', ['js', 'ejs', 'webserver', 'watch','json']);

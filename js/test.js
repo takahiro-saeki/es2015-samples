@@ -1,6 +1,7 @@
-export default class test {
-  constructor(name) {
-    this.name = name;
+export default class Modal {
+  constructor(el) {
+    $('body').addClass('wrap');
+    $(el).on('click', () => console.log('test'))
   }
   show(test) {
     //this.test = test;

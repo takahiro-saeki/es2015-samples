@@ -1,0 +1,11 @@
+.ModalTest {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
