@@ -1,3 +1,10 @@
+//import regExp from './regExp';
+const regExp = {
+  'tel': /\d{2,4}-\d{2,4}-\d{4}/,
+  'number': /^[0-9]+$/,
+  'kana': /^[ァ-ン]+$/
+}
+
 export default class form {
   constructor(el) {
     this.$el = $(el);
@@ -25,7 +32,7 @@ export default class form {
   //数値のみ
   number(errMsg = '全てカタカナで入力してください。') {
     this.$el.on('blur', e => {
-      if(!this.$el.val().match((/^[0-9]+$/))) {
+      if(!this.$el.val().match((regExp.number))) {
         return this.error(errMsg);
       };
       this.remove();
@@ -35,7 +42,26 @@ export default class form {
   //カタカナのみ
   kana(errMsg = '全てカタカナで入力してください。') {
     this.$el.on('blur', e => {
-      if(!this.$el.val().match(/^[ァ-ン]+$/)) {
+      if(!this.$el.val().match(regExp.kana)) {
+        return this.error(errMsg);
+      }
+      this.remove();
+    })
+  }
+
+  tel(errMsg = '不正な入力です。') {
+    this.$el.on('blur', e => {
+      if(!this.$el.val().match(regExp.tel)) {
+        return this.error(errMsg);
+      }
+      this.remove();
+    })
+  }
+
+
+  mail(errMsg = '不正な入力です。') {
+    this.$el.on('blur', e => {
+      if(!this.$el.val().match()) {
         return this.error(errMsg);
       }
       this.remove();

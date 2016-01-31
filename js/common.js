@@ -9,3 +9,8 @@ nameInValid.maxNum(4);
 
 let kanaInValid = new form('#kana');
 kanaInValid.kana();
+
+let telInValid = new form('#tel');
+telInValid.tel();
+
+let mailInValid = new form('#mail')

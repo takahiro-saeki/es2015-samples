@@ -51,6 +51,11 @@ nameInValid.maxNum(4);
 var kanaInValid = new _form2.default('#kana');
 kanaInValid.kana();
 
+var telInValid = new _form2.default('#tel');
+telInValid.tel();
+
+var mailInValid = new _form2.default('#mail');
+
 },{"./api":1,"./form":3}],3:[function(require,module,exports){
 'use strict';
 
@@ -61,6 +66,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//import regExp from './regExp';
+var regExp = {
+  'tel': /\d{2,4}-\d{2,4}-\d{4}/,
+  'number': /^[0-9]+$/,
+  'kana': /^[ァ-ン]+$/
+};
 
 var form = function () {
   function form(el) {
@@ -110,7 +122,7 @@ var form = function () {
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
       this.$el.on('blur', function (e) {
-        if (!_this3.$el.val().match(/^[0-9]+$/)) {
+        if (!_this3.$el.val().match(regExp.number)) {
           return _this3.error(errMsg);
         };
         _this3.remove();
@@ -127,10 +139,38 @@ var form = function () {
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
       this.$el.on('blur', function (e) {
-        if (!_this4.$el.val().match(/^[ァ-ン]+$/)) {
+        if (!_this4.$el.val().match(regExp.kana)) {
           return _this4.error(errMsg);
         }
         _this4.remove();
+      });
+    }
+  }, {
+    key: 'tel',
+    value: function tel() {
+      var _this5 = this;
+
+      var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
+
+      this.$el.on('blur', function (e) {
+        if (!_this5.$el.val().match(regExp.tel)) {
+          return _this5.error(errMsg);
+        }
+        _this5.remove();
+      });
+    }
+  }, {
+    key: 'mail',
+    value: function mail() {
+      var _this6 = this;
+
+      var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
+
+      this.$el.on('blur', function (e) {
+        if (!_this6.$el.val().match()) {
+          return _this6.error(errMsg);
+        }
+        _this6.remove();
       });
     }
 
