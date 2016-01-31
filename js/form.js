@@ -2,7 +2,9 @@
 const regExp = {
   'tel': /\d{2,4}-\d{2,4}-\d{4}/,
   'number': /^[0-9]+$/,
-  'kana': /^[ァ-ン]+$/
+  'kana': /^[ァ-ン]+$/,
+  'postcode': /^\d{3}-?\d{4}$/,
+  'mail': /[!#-9A-~]+@+[a-z0-9]+.+[^.]$/i
 }
 
 export default class form {
@@ -49,6 +51,7 @@ export default class form {
     })
   }
 
+  //電話番号
   tel(errMsg = '不正な入力です。') {
     this.$el.on('blur', e => {
       if(!this.$el.val().match(regExp.tel)) {
@@ -58,10 +61,20 @@ export default class form {
     })
   }
 
-
+  //メールアドレス
   mail(errMsg = '不正な入力です。') {
     this.$el.on('blur', e => {
-      if(!this.$el.val().match()) {
+      if(!this.$el.val().match(regExp.mail)) {
+        return this.error(errMsg);
+      }
+      this.remove();
+    })
+  }
+
+  //郵便番号
+  postcode(errMsg = '不正な入力です。') {
+    this.$el.on('blur', e => {
+      if(!this.$el.val().match(regExp.postcode)) {
         return this.error(errMsg);
       }
       this.remove();
