@@ -45,12 +45,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var data = new _api2.default('山田,18');
 data.status();
 
-var validate = new _form2.default('#name');
+var nameInValid = new _form2.default('#name');
+nameInValid.maxNum(4);
 
-validate.number();
-validate.maxNum(4);
-
-console.log($('#name').data('validation'));
+var kanaInValid = new _form2.default('#kana');
+kanaInValid.kana();
 
 },{"./api":1,"./form":3}],3:[function(require,module,exports){
 'use strict';
@@ -67,58 +66,89 @@ var form = function () {
   function form(el) {
     _classCallCheck(this, form);
 
-    this.el = el;
+    this.$el = $(el);
   }
+  //最大文字数
 
   _createClass(form, [{
     key: 'maxNum',
     value: function maxNum(max) {
       var _this = this;
 
-      $(this.el).on('blur', function (e) {
-        if ($(_this.el).val().length > max) {
-          console.log('大きいよ');
-          return _this.error();
+      var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '文字数がオーバーしています。' : arguments[1];
+
+      this.$el.on('blur', function (e) {
+        if (_this.$el.val().length > max) {
+          return _this.error(msg);
         }
         _this.remove();
       });
     }
+
+    //最小文字数
+
   }, {
     key: 'minNum',
-    value: function minNum(min) {
+    value: function minNum(min, errMsg) {
       var _this2 = this;
 
-      $(this.el).on('blur', function (e) {
-        if ($(_this2.el).val().length < min) {
-          console.log('大きいよ');
-          return _this2.error('もっと少なく！');
+      this.$el.on('blur', function (e) {
+        if (_this2.$el.val().length < min) {
+          return _this2.error(errMsg);
         }
         _this2.remove();
       });
     }
+
+    //数値のみ
+
   }, {
     key: 'number',
     value: function number() {
       var _this3 = this;
 
-      $(this.el).on('blur', function (e) {
-        if (!$(_this3.el).val().match(/^[0-9]+$/)) {
-          return _this3.error();
+      var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
+
+      this.$el.on('blur', function (e) {
+        if (!_this3.$el.val().match(/^[0-9]+$/)) {
+          return _this3.error(errMsg);
         };
         _this3.remove();
       });
     }
+
+    //カタカナのみ
+
+  }, {
+    key: 'kana',
+    value: function kana() {
+      var _this4 = this;
+
+      var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
+
+      this.$el.on('blur', function (e) {
+        if (!_this4.$el.val().match(/^[ァ-ン]+$/)) {
+          return _this4.error(errMsg);
+        }
+        _this4.remove();
+      });
+    }
+
+    //エラーの表示
+
   }, {
     key: 'error',
-    value: function error(message) {
-      var error = $(this.el).addClass('error');
-      this.errMsg(message);
-      $(this.el).after('<p>' + msg + '</p>');
+    value: function error(msg) {
+      var error = this.$el.addClass('error');
+      this.$el.after('<p>' + msg + '</p>');
     }
+
+    //エラーの削除
+
   }, {
     key: 'remove',
     value: function remove() {
-      var clear = $(this.el).removeClass('error');
+      var clear = this.$el.removeClass('error');
     }
   }]);
 

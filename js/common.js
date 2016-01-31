@@ -4,9 +4,8 @@ import form from './form';
 let data = new api('山田,18');
 data.status();
 
-let validate = new form('#name');
+let nameInValid = new form('#name');
+nameInValid.maxNum(4);
 
-validate.number()
-validate.maxNum(4)
-
-console.log($('#name').data('validation'));
+let kanaInValid = new form('#kana');
+kanaInValid.kana();
