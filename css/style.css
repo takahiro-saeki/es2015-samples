@@ -1,3 +1,9 @@
+@import 'common/normalize';
+@import 'common/base';
+@import 'common/nav';
+@import 'common/form';
+
+
 .ModalTest {
   width: 60%;
   height: 60%;

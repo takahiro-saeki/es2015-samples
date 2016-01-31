@@ -1,8 +1,12 @@
-import ejs from 'ejs';
-import fs from 'fs';
-const Path from '../ejs/test.ejs';
+import api from './api';
+import form from './form';
 
+let data = new api('山田,18');
+data.status();
 
-ejs.render(Path, {
-  test:test
-});
+let validate = new form('#name');
+
+validate.number()
+validate.maxNum(4)
+
+console.log($('#name').data('validation'));

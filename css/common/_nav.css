@@ -1,0 +1,8 @@
+.nav-bar {
+  background: #FF6B7A;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: #FFF;
+  margin: 0 0 1rem 0;
+}

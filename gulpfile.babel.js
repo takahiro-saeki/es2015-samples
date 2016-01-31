@@ -6,6 +6,24 @@ import babelify from 'babelify';
 import ejs from 'gulp-ejs';
 import webserver from 'gulp-webserver';
 import prettify from 'gulp-jsbeautifier';
+import postcss from 'gulp-postcss';
+
+gulp.task('css', () => {
+  let processors = [
+    require('autoprefixer')({browsers: 'last 2 versions'}),
+    require('postcss-partial-import'),
+    require('postcss-mixins'),
+    require('postcss-extend')(),
+    require('postcss-nested')(),
+    require('postcss-simple-vars')(),
+    require('postcss-size')(),
+    require('postcss-media-minmax')()
+  ];
+
+  return gulp.src('./css/*.css')
+  .pipe(postcss(processors))
+  .pipe(gulp.dest('./template/css'))
+});
 
 //jsonをテンプレートフォルダに
 gulp.task('json', () => {
@@ -37,6 +55,8 @@ gulp.task('js', () => {
 gulp.task('watch', () => {
   gulp.watch('./ejs/**/*.ejs', ['ejs']);
   gulp.watch('./js/**/*.js', ['js']);
+  gulp.watch('./css/**/*.css', ['css']);
+  gulp.watch('./css/common/**/*.css', ['css']);
 });
 
 gulp.task('ejs', () => {
@@ -45,4 +65,4 @@ gulp.task('ejs', () => {
   .pipe(gulp.dest("./template"))
 })
 
-gulp.task('default', ['js', 'ejs', 'webserver', 'watch','json']);
+gulp.task('default', ['css', 'js', 'ejs', 'webserver', 'watch','json']);

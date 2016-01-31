@@ -1,0 +1,21 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #FAF5EB;
+}
+
+.clearfix {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.row {
+  @extend .clearfix;
+}
+
+.error {
+  border: 1px solid red!important;
+}

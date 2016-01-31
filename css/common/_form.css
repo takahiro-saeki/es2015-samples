@@ -1,0 +1,17 @@
+.input-field {
+  @extend .clearfix;
+  margin: 1rem auto;
+  padding: 1rem 0;
+}
+
+.form-input {
+  padding: 1rem;
+  border-radius: 5px;
+  appearance: none;
+  border: 1px solid #ccc;
+}
+
+.form-label {
+  text-align: center;
+  color: #FF6B7A;
+}
