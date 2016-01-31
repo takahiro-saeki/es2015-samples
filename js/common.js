@@ -13,6 +13,7 @@ let m = modalText;
 
 let Modal = new modal('.test');
 Modal.show(m.title, m.text, m.yes, m.no);
+Modal.ok();
 
 let nameInValid = new form('#name');
 nameInValid.maxNum(4);

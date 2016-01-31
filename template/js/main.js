@@ -57,6 +57,7 @@ var m = modalText;
 
 var Modal = new _modal2.default('.test');
 Modal.show(m.title, m.text, m.yes, m.no);
+Modal.ok();
 
 var nameInValid = new _form2.default('#name');
 nameInValid.maxNum(4);
@@ -255,6 +256,7 @@ var modal = function () {
     _classCallCheck(this, modal);
 
     this.$el = $(el);
+    this.$modal = $('.ModalTest');
   }
 
   _createClass(modal, [{
@@ -264,7 +266,21 @@ var modal = function () {
       var no = arguments.length <= 3 || arguments[3] === undefined ? 'いいえ' : arguments[3];
 
       this.$el.on('click', function () {
-        $('body').append('<main class="ModalTest">\n        <section class="modal-title">' + title + '</section>\n        <section class="modal-main">' + msg + '</section>\n        <section class="modal-check">\n          <buttom class="ok">' + yes + '</buttom>\n          <buttom class="ng">' + no + '</buttom>\n        </section>\n      </main>');
+
+        var element = '<main class="ModalTest">\n        <section class="modal-title">' + title + '</section>\n        <section class="modal-main">' + msg + '</section>\n        <section class="modal-check">\n          <buttom class="ok">' + yes + '</buttom>\n          <buttom class="ng">' + no + '</buttom>\n        </section>\n      </main>';
+
+        $('body').append(element);
+      });
+    }
+  }, {
+    key: 'ok',
+    value: function ok() {
+      var _this = this;
+
+      $(document).on('click', '.ok', function (e) {
+        console.log(_this.$modal);
+        console.log('test');
+        document.querySelector('.ModalTest').remove();
       });
     }
   }]);
