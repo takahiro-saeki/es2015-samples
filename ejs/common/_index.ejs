@@ -6,45 +6,46 @@
 
       <section class="col-xs-8">
         <div class="input-field col-xs-12">
-          <label for="name" class="col-xs-2 form-label">名前</label>
-          <input type="text" id="name" class="col-xs-10 form-input" />
+          <div id="name">
+            <label for="name" class="col-xs-2 form-label">名前</label>
+            <input type="text" class="col-xs-4 form-input" />
+          </div>
+
+          <div id="kana">
+            <label for="kana" class="col-xs-2 form-label">カナ</label>
+            <input type="text" id="kana" class="col-xs-4 form-input"/>
+          </div>
         </div>
 
         <div class="input-field col-xs-12">
-          <label for="kana" class="col-xs-2 form-label">カナ</label>
-          <input type="text" id="kana" class="col-xs-10 form-input"/>
+          <div id="tel">
+            <label for="tel" class="col-xs-2 form-label">電話番号</label>
+            <input type="tel" id="tel" class="col-xs-4 form-input"/>
+          </div>
+          <div id="mail">
+            <label for="mail" class="col-xs-2 form-label">アドレス</label>
+            <input type="email" id="mail" class="col-xs-4 form-input"/>
+          </div>
         </div>
 
-        <div class="input-field col-xs-12">
-          <label for="tel" class="col-xs-2 form-label">電話番号</label>
-          <input type="tel" id="tel" class="col-xs-10 form-input"/>
-        </div>
-
-        <div class="input-field col-xs-12">
-          <label for="mail" class="col-xs-2 form-label">メールアドレス</label>
-          <input type="email" id="mail" class="col-xs-10 form-input"/>
-        </div>
-
-        <div class="input-field col-xs-12">
+        <div class="input-field col-xs-12" id="postcode">
           <label for="postcode" class="col-xs-2 form-label">郵便番号</label>
           <input type="nunber" id="postcode" class="col-xs-10 form-input"/>
         </div>
 
-        <div class="input-field col-xs-12">
+        <div class="input-field col-xs-12" id="address">
           <label for="address" class="col-xs-2 form-label">住所</label>
           <input type="text" id="address" class="col-xs-10 form-input"/>
         </div>
 
-        <div class="input-field col-xs-12">
-          <label for="sex" class="col-xs-2 form-label">性別</label>
-          <input type="text" id="sex" class="col-xs-10 form-input"/>
-        </div>
-
-        <div class="input-field col-xs-12">
+        <div class="input-field col-xs-12" id="msg">
           <label for="msg" class="col-xs-2 form-label">メッセージ</label>
           <textarea id="msg" class="col-xs-10 form-input"></textarea>
         </div>
-
+        <div class="input-field col-xs-12">
+          <input type="submit" value="送信する" class="submit">
+          <input type="reset" value="リセット" class="reset">
+        </div>
       </section>
 
       <section class="col-cx-offset-2"></section>

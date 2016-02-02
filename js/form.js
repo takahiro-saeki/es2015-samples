@@ -10,19 +10,20 @@ const regExp = {
 export default class form {
   constructor(el) {
     this.$el = $(el);
+    this.$find = this.$el.find('input');
   }
   //最大文字数
-  maxNum(max, errMsg = `文字数がオーバーしています。`) {
-    this.$el.on('blur', e => {
-      if (this.$el.val().length > max) {
-        return this.error(msg);
+  maxNum(max, errMsg = `最大${ max }文字までにしてください`) {
+    this.$find.on('blur', e => {
+      if (this.$el.find('input').val().length > max) {
+        return this.error(errMsg);
       }
       this.remove();
     })
   }
 
   //最小文字数
-  minNum(min,errMsg) {
+  minNum(min,errMsg = `最大${ min }文字までにしてください`) {
     this.$el.on('blur', e => {
       if (this.$el.val().length < min) {
         return this.error(errMsg);
@@ -84,11 +85,12 @@ export default class form {
   //エラーの表示
   error(msg) {
     let error = this.$el.addClass('error');
-    this.$el.after('<p>' + msg + '</p>')
+    this.$el.after('<p class="errMsg">' + msg + '</p>');
   }
 
   //エラーの削除
-  remove() {
-    let clear = this.$el.removeClass('error')
+  remove(e) {
+    this.$el.removeClass('error');
+    console.log($(e.target).closest('.errMsg').remove())
   }
 }

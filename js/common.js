@@ -11,7 +11,7 @@ let modalText = {
 
 let m = modalText;
 
-let Modal = new modal('.test');
+let Modal = new modal('.submit');
 Modal.show(m.title, m.text, m.yes, m.no);
 Modal.ok();
 

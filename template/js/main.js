@@ -55,7 +55,7 @@ var modalText = {
 
 var m = modalText;
 
-var Modal = new _modal2.default('.test');
+var Modal = new _modal2.default('.submit');
 Modal.show(m.title, m.text, m.yes, m.no);
 Modal.ok();
 
@@ -99,6 +99,7 @@ var form = function () {
     _classCallCheck(this, form);
 
     this.$el = $(el);
+    this.$find = this.$el.find('input');
   }
   //最大文字数
 
@@ -107,11 +108,11 @@ var form = function () {
     value: function maxNum(max) {
       var _this = this;
 
-      var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '文字数がオーバーしています。' : arguments[1];
+      var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + max + '文字までにしてください' : arguments[1];
 
-      this.$el.on('blur', function (e) {
-        if (_this.$el.val().length > max) {
-          return _this.error(msg);
+      this.$find.on('blur', function (e) {
+        if (_this.$el.find('input').val().length > max) {
+          return _this.error(errMsg);
         }
         _this.remove();
       });
@@ -121,8 +122,10 @@ var form = function () {
 
   }, {
     key: 'minNum',
-    value: function minNum(min, errMsg) {
+    value: function minNum(min) {
       var _this2 = this;
+
+      var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + min + '文字までにしてください' : arguments[1];
 
       this.$el.on('blur', function (e) {
         if (_this2.$el.val().length < min) {
@@ -223,15 +226,16 @@ var form = function () {
     key: 'error',
     value: function error(msg) {
       var error = this.$el.addClass('error');
-      this.$el.after('<p>' + msg + '</p>');
+      this.$el.after('<p class="errMsg">' + msg + '</p>');
     }
 
     //エラーの削除
 
   }, {
     key: 'remove',
-    value: function remove() {
-      var clear = this.$el.removeClass('error');
+    value: function remove(e) {
+      this.$el.removeClass('error');
+      console.log($(e.target).closest('.errMsg').remove());
     }
   }]);
 

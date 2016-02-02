@@ -1,0 +1,72 @@
+.ModalTest {
+  size: 60% 60%;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.modal-title {
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-main {
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.modal-check {
+  font-size: 1.6rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  size: 100% auto;
+}
+
+.ok {
+  size: 50% auto;
+  background: #00bfa5;
+  font-size: 20px;
+  display: block;
+  float: left;
+  padding: 1rem 0;
+  color: #fff;
+  text-align: center;
+}
+
+.ng {
+  background: #FF6B7A;
+  @extend .ok;
+}
+
+.input-field {
+  button {
+    -webkit-appearance: none;
+    background: none;
+  }
+}
+
+.submit {
+  display: inline-block;
+  width: 40%;
+  background: #00bfa5;
+  appearance: none;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+}
+
+.reset {
+  @extend .submit;
+  background: #FF6B7A;
+}
