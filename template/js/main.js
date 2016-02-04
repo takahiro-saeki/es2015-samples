@@ -111,7 +111,7 @@ var form = function () {
       var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + max + '文字までにしてください' : arguments[1];
 
       this.$find.on('blur', function (e) {
-        if (_this.$el.find('input').val().length > max) {
+        if (_this.$find.val().length > max) {
           return _this.error(errMsg);
         }
         _this.remove();
@@ -127,8 +127,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + min + '文字までにしてください' : arguments[1];
 
-      this.$el.on('blur', function (e) {
-        if (_this2.$el.val().length < min) {
+      this.$find.on('blur', function (e) {
+        if (_this2.$find.val().length < min) {
           return _this2.error(errMsg);
         }
         _this2.remove();
@@ -144,8 +144,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
-      this.$el.on('blur', function (e) {
-        if (!_this3.$el.val().match(regExp.number)) {
+      this.$find.on('blur', function (e) {
+        if (!_this3.$find.val().match(regExp.number)) {
           return _this3.error(errMsg);
         };
         _this3.remove();
@@ -161,8 +161,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
-      this.$el.on('blur', function (e) {
-        if (!_this4.$el.val().match(regExp.kana)) {
+      this.$find.on('blur', function (e) {
+        if (!_this4.$find.val().match(regExp.kana)) {
           return _this4.error(errMsg);
         }
         _this4.remove();
@@ -178,8 +178,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$el.on('blur', function (e) {
-        if (!_this5.$el.val().match(regExp.tel)) {
+      this.$find.on('blur', function (e) {
+        if (!_this5.$find.val().match(regExp.tel)) {
           return _this5.error(errMsg);
         }
         _this5.remove();
@@ -195,8 +195,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$el.on('blur', function (e) {
-        if (!_this6.$el.val().match(regExp.mail)) {
+      this.$find.on('blur', function (e) {
+        if (!_this6.$find.val().match(regExp.mail)) {
           return _this6.error(errMsg);
         }
         _this6.remove();
@@ -212,8 +212,8 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$el.on('blur', function (e) {
-        if (!_this7.$el.val().match(regExp.postcode)) {
+      this.$find.on('blur', function (e) {
+        if (!_this7.$find.val().match(regExp.postcode)) {
           return _this7.error(errMsg);
         }
         _this7.remove();
@@ -225,7 +225,7 @@ var form = function () {
   }, {
     key: 'error',
     value: function error(msg) {
-      var error = this.$el.addClass('error');
+      this.$find.addClass('error');
       this.$el.after('<p class="errMsg">' + msg + '</p>');
     }
 
@@ -234,8 +234,8 @@ var form = function () {
   }, {
     key: 'remove',
     value: function remove(e) {
-      this.$el.removeClass('error');
-      console.log($(e.target).closest('.errMsg').remove());
+      this.$find.removeClass('error');
+      $('.errMsg').remove();
     }
   }]);
 
