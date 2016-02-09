@@ -48,7 +48,13 @@ var _es = require('./es6.js');
 
 var _es2 = _interopRequireDefault(_es);
 
+var _test = require('./test');
+
+var _test2 = _interopRequireDefault(_test);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _test2.default)();
 
 var modalText = {
   title: 'モーダルタイトル',
@@ -78,7 +84,7 @@ mailInValid.mail();
 var postcodeInValid = new _form2.default('#postcode');
 postcodeInValid.postcode();
 
-},{"./api":1,"./es6.js":3,"./form":4,"./modal":5}],3:[function(require,module,exports){
+},{"./api":1,"./es6.js":3,"./form":4,"./modal":5,"./test":6}],3:[function(require,module,exports){
 'use strict';
 
 var test = 'varとほぼ同じ使い方をするよ';
@@ -197,7 +203,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + max + '文字までにしてください' : arguments[1];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (_this.$find.val().length > max) {
           return _this.error(errMsg);
         }
@@ -214,7 +220,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 1 || arguments[1] === undefined ? '最大' + min + '文字までにしてください' : arguments[1];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (_this2.$find.val().length < min) {
           return _this2.error(errMsg);
         }
@@ -231,7 +237,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (!_this3.$find.val().match(regExp.number)) {
           return _this3.error(errMsg);
         };
@@ -248,7 +254,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '全てカタカナで入力してください。' : arguments[0];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (!_this4.$find.val().match(regExp.kana)) {
           return _this4.error(errMsg);
         }
@@ -265,7 +271,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (!_this5.$find.val().match(regExp.tel)) {
           return _this5.error(errMsg);
         }
@@ -282,7 +288,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (!_this6.$find.val().match(regExp.mail)) {
           return _this6.error(errMsg);
         }
@@ -299,7 +305,7 @@ var form = function () {
 
       var errMsg = arguments.length <= 0 || arguments[0] === undefined ? '不正な入力です。' : arguments[0];
 
-      this.$find.on('blur', function (e) {
+      this.$find.on('blur', function () {
         if (!_this7.$find.val().match(regExp.postcode)) {
           return _this7.error(errMsg);
         }
@@ -312,17 +318,20 @@ var form = function () {
   }, {
     key: 'error',
     value: function error(msg) {
-      this.$find.addClass('error');
-      this.$find.after('<p class="errMsg">' + msg + '</p>');
+      var errFlag = this.$el.find('.errMsg').length;
+      if (!errFlag) {
+        this.$find.addClass('error');
+        this.$find.after('<p class="errMsg">' + msg + '</p>');
+      }
     }
 
     //エラーの削除
 
   }, {
     key: 'remove',
-    value: function remove(e) {
+    value: function remove() {
       this.$find.removeClass('error');
-      $('.errMsg').remove();
+      this.$el.find('.errMsg').remove();
     }
   }]);
 
@@ -380,5 +389,21 @@ var modal = function () {
 }();
 
 exports.default = modal;
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  $('#aaa').on('click', function () {
+    var flags = $('#bbb').find('.gaze');
+    if (!flags) {
+      $('#bbb').append('<p class="gaze">追加要素</p>');
+    }
+  });
+};
 
 },{}]},{},[2]);

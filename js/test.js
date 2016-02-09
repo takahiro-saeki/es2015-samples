@@ -1,10 +1,8 @@
-export default class Modal {
-  constructor(el) {
-    $('body').addClass('wrap');
-    $(el).on('click', () => console.log('test'))
-  }
-  show(test) {
-    //this.test = test;
-    console.log(this.name + 'です！' + test);
-  }
+export default function() {
+  $('#aaa').on('click', () => {
+    let flags = $('#bbb').find('.gaze');
+    if(!flags) {
+      $('#bbb').append('<p class="gaze">追加要素</p>');
+    }
+  })
 }

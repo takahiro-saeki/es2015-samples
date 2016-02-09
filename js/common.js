@@ -2,6 +2,8 @@ import api from './api';
 import form from './form';
 import modal from './modal';
 import es6 from './es6.js';
+import test from './test';
+test()
 
 let modalText = {
   title: 'モーダルタイトル',
