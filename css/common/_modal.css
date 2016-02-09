@@ -58,12 +58,13 @@
 
 .submit {
   display: inline-block;
-  width: 40%;
+  width: 49%;
   background: #00bfa5;
   appearance: none;
   border-radius: 5px;
   border: none;
   color: #fff;
+  padding: 1rem 0;
 }
 
 .reset {

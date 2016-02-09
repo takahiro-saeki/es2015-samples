@@ -154,8 +154,8 @@ Promise.all([tryIt(0.70), tryIt(0.70)]).then(function (array) {
 var p1 = new Promise(function (resolveUser, rejectUser) {
   rejectUser('エラーですよ'); //promiseを棄却する
 }).catch(function (m) {
-  alert("catch");
-  alert(m); //エラーですよ
+  //alert("catch");
+  //alert(m); //エラーですよ
 });
 console.log(p1);
 
@@ -313,7 +313,7 @@ var form = function () {
     key: 'error',
     value: function error(msg) {
       this.$find.addClass('error');
-      this.$el.after('<p class="errMsg">' + msg + '</p>');
+      this.$find.after('<p class="errMsg">' + msg + '</p>');
     }
 
     //エラーの削除

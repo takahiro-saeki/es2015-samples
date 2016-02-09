@@ -85,7 +85,7 @@ export default class form {
   //エラーの表示
   error(msg) {
     this.$find.addClass('error');
-    this.$el.after('<p class="errMsg">' + msg + '</p>');
+    this.$find.after('<p class="errMsg">' + msg + '</p>');
   }
 
   //エラーの削除

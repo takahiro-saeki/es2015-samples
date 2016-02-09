@@ -50,8 +50,8 @@ Promise.all([tryIt(0.70), tryIt(0.70)]).then(function(array){
 var p1 = new Promise(function (resolveUser, rejectUser) {
   rejectUser('エラーですよ'); //promiseを棄却する
 }).catch(function (m) {
-  alert("catch");
-  alert(m); //エラーですよ
+  //alert("catch");
+  //alert(m); //エラーですよ
 })
 console.log(p1);
 
