@@ -44,6 +44,10 @@ var _modal = require('./modal');
 
 var _modal2 = _interopRequireDefault(_modal);
 
+var _es = require('./es6.js');
+
+var _es2 = _interopRequireDefault(_es);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modalText = {
@@ -74,7 +78,90 @@ mailInValid.mail();
 var postcodeInValid = new _form2.default('#postcode');
 postcodeInValid.postcode();
 
-},{"./api":1,"./form":3,"./modal":4}],3:[function(require,module,exports){
+},{"./api":1,"./es6.js":3,"./form":4,"./modal":5}],3:[function(require,module,exports){
+'use strict';
+
+var test = 'varとほぼ同じ使い方をするよ';
+var apiData = "APIのパス";
+//test(a,b) => return a * b;
+
+//defaults(a = "defaults") => console.log(a)
+/*
+var template1 = `バックスラッシュで記述するよ`
+template2(a,b) => {
+  `引数がある場合はこのように${ a }みたいな感じで指定すると出来るよ！
+  また、改行したり関数の実行もう出来るよ${ b }`
+}
+*/
+var arrays = ['高坂穂乃果', '絢瀬 絵里', '南ことり', '園田海未', '星空凛', '西木野真姫', '東條希', '小泉花陽', '矢澤にこ'];
+for (var i in arrays) {
+  console.log(i);
+}
+
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = arrays[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var i = _step.value;
+
+    console.log(i);
+  }
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator.return) {
+      _iterator.return();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
+
+var promiseTest = new Promise(function (resolve, reject) {
+  reject('エラー');
+});
+
+promiseTest.then(function () {
+  alert('1秒経過した');
+});
+
+promiseTest.catch(function (error) {
+  //alert(error)
+  $('body').append('<p>テスト</p>');
+});
+
+var tryIt = function tryIt(successProbably) {
+  return new Promise(function (resolve, reject) {
+    var isSuccess = Math.random() > 1 - successProbably;
+    if (isSuccess) {
+      resolve('Solved it!');
+    } else {
+      reject('Failed...');
+    }
+  });
+};
+
+Promise.all([tryIt(0.70), tryIt(0.70)]).then(function (array) {
+  array; // ["Solved it!", "Solved it!"]
+});
+
+var p1 = new Promise(function (resolveUser, rejectUser) {
+  rejectUser('エラーですよ'); //promiseを棄却する
+}).catch(function (m) {
+  alert("catch");
+  alert(m); //エラーですよ
+});
+console.log(p1);
+
+module.exports = promiseTest;
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -244,7 +331,7 @@ var form = function () {
 
 exports.default = form;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
