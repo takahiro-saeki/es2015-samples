@@ -1,4 +1,3 @@
-//import regExp from './regExp';
 const regExp = {
   'tel': /\d{2,4}-\d{2,4}-\d{4}/,
   'number': /^[0-9]+$/,
@@ -12,6 +11,7 @@ export default class form {
     this.$el = $(el);
     this.$find = this.$el.find('input');
   }
+
   //最大文字数
   maxNum(max, errMsg = `最大${ max }文字までにしてください`) {
     this.$find.on('blur', () => {
@@ -87,7 +87,7 @@ export default class form {
     let errFlag = this.$el.find('.errMsg').length;
     if (!errFlag) {
       this.$find.addClass('error');
-      this.$find.after(`<p class="errMsg">${ msg }</p>`);
+      this.$find.after(`<span class="errMsg">${ msg }</span>`);
     }
   }
 

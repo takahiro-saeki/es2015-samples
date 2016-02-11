@@ -71,3 +71,20 @@
   @extend .submit;
   background: #FF6B7A;
 }
+
+.modal-bg {
+  size: 100% 100%;
+  position: absolute;
+  z-index: 10;
+  background: color(#000 a(30%));
+}
+
+.errMsg {
+  position: absolute;
+  background: color(#000 a(70%));
+  color: #fff;
+  padding: 1rem;
+  left: 12rem;
+  border-radius: 1rem;
+  top: -4rem;
+}

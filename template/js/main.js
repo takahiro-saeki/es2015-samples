@@ -48,13 +48,7 @@ var _es = require('./es6.js');
 
 var _es2 = _interopRequireDefault(_es);
 
-var _test = require('./test');
-
-var _test2 = _interopRequireDefault(_test);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _test2.default)();
 
 var modalText = {
   title: 'モーダルタイトル',
@@ -64,7 +58,6 @@ var modalText = {
 };
 
 var m = modalText;
-
 var Modal = new _modal2.default('.submit');
 Modal.show(m.title, m.text, m.yes, m.no);
 Modal.ok();
@@ -84,7 +77,7 @@ mailInValid.mail();
 var postcodeInValid = new _form2.default('#postcode');
 postcodeInValid.postcode();
 
-},{"./api":1,"./es6.js":3,"./form":4,"./modal":5,"./test":6}],3:[function(require,module,exports){
+},{"./api":1,"./es6.js":3,"./form":4,"./modal":5}],3:[function(require,module,exports){
 'use strict';
 
 var test = 'varとほぼ同じ使い方をするよ';
@@ -101,7 +94,7 @@ template2(a,b) => {
 */
 var arrays = ['高坂穂乃果', '絢瀬 絵里', '南ことり', '園田海未', '星空凛', '西木野真姫', '東條希', '小泉花陽', '矢澤にこ'];
 for (var i in arrays) {
-  console.log(i);
+   console.log(i);
 }
 
 var _iteratorNormalCompletion = true;
@@ -109,63 +102,25 @@ var _didIteratorError = false;
 var _iteratorError = undefined;
 
 try {
-  for (var _iterator = arrays[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-    var i = _step.value;
+   for (var _iterator = arrays[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var i = _step.value;
 
-    console.log(i);
-  }
+      console.log(i);
+   }
 } catch (err) {
-  _didIteratorError = true;
-  _iteratorError = err;
+   _didIteratorError = true;
+   _iteratorError = err;
 } finally {
-  try {
-    if (!_iteratorNormalCompletion && _iterator.return) {
-      _iterator.return();
-    }
-  } finally {
-    if (_didIteratorError) {
-      throw _iteratorError;
-    }
-  }
+   try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+         _iterator.return();
+      }
+   } finally {
+      if (_didIteratorError) {
+         throw _iteratorError;
+      }
+   }
 }
-
-var promiseTest = new Promise(function (resolve, reject) {
-  reject('エラー');
-});
-
-promiseTest.then(function () {
-  alert('1秒経過した');
-});
-
-promiseTest.catch(function (error) {
-  //alert(error)
-  $('body').append('<p>テスト</p>');
-});
-
-var tryIt = function tryIt(successProbably) {
-  return new Promise(function (resolve, reject) {
-    var isSuccess = Math.random() > 1 - successProbably;
-    if (isSuccess) {
-      resolve('Solved it!');
-    } else {
-      reject('Failed...');
-    }
-  });
-};
-
-Promise.all([tryIt(0.70), tryIt(0.70)]).then(function (array) {
-  array; // ["Solved it!", "Solved it!"]
-});
-
-var p1 = new Promise(function (resolveUser, rejectUser) {
-  rejectUser('エラーですよ'); //promiseを棄却する
-}).catch(function (m) {
-  //alert("catch");
-  //alert(m); //エラーですよ
-});
-console.log(p1);
-
-module.exports = promiseTest;
 
 },{}],4:[function(require,module,exports){
 'use strict';
@@ -178,7 +133,6 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-//import regExp from './regExp';
 var regExp = {
   'tel': /\d{2,4}-\d{2,4}-\d{4}/,
   'number': /^[0-9]+$/,
@@ -194,6 +148,7 @@ var form = function () {
     this.$el = $(el);
     this.$find = this.$el.find('input');
   }
+
   //最大文字数
 
   _createClass(form, [{
@@ -321,7 +276,7 @@ var form = function () {
       var errFlag = this.$el.find('.errMsg').length;
       if (!errFlag) {
         this.$find.addClass('error');
-        this.$find.after('<p class="errMsg">' + msg + '</p>');
+        this.$find.after('<span class="errMsg">' + msg + '</span>');
       }
     }
 
@@ -356,31 +311,37 @@ var modal = function () {
     _classCallCheck(this, modal);
 
     this.$el = $(el);
-    this.$modal = $('.ModalTest');
+    this.$modalFlag = $('#modal-flag');
   }
 
   _createClass(modal, [{
     key: 'show',
     value: function show(title, msg) {
+      var _this = this;
+
       var yes = arguments.length <= 2 || arguments[2] === undefined ? 'はい' : arguments[2];
       var no = arguments.length <= 3 || arguments[3] === undefined ? 'いいえ' : arguments[3];
 
       this.$el.on('click', function () {
-
-        var element = '<main class="ModalTest">\n        <section class="modal-title">' + title + '</section>\n        <section class="modal-main">' + msg + '</section>\n        <section class="modal-check">\n          <buttom class="ok">' + yes + '</buttom>\n          <buttom class="ng">' + no + '</buttom>\n        </section>\n      </main>';
-
-        $('body').append(element);
+        var errFlag = $('body').find('.errMsg').length;
+        if (!errFlag) {
+          var element = '<main class="ModalTest">\n        <section class="modal-title">' + title + '</section>\n        <section class="modal-main">' + msg + '</section>\n        <section class="modal-check">\n        <buttom class="ok">' + yes + '</buttom>\n        <buttom class="ng">' + no + '</buttom>\n        </section>\n        </main>';
+          $('body').append(element);
+          _this.$modalFlag.addClass('modal-bg');
+        } else {
+          document.querySelector('.error').focus();
+          return false;
+        }
       });
     }
   }, {
     key: 'ok',
     value: function ok() {
-      var _this = this;
+      var _this2 = this;
 
-      $(document).on('click', '.ok', function (e) {
-        console.log(_this.$modal);
-        console.log('test');
+      $(document).on('click', '.ok', function () {
         document.querySelector('.ModalTest').remove();
+        _this2.$modalFlag.removeClass('modal-bg');
       });
     }
   }]);
@@ -389,21 +350,5 @@ var modal = function () {
 }();
 
 exports.default = modal;
-
-},{}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function () {
-  $('#aaa').on('click', function () {
-    var flags = $('#bbb').find('.gaze');
-    if (!flags) {
-      $('#bbb').append('<p class="gaze">追加要素</p>');
-    }
-  });
-};
 
 },{}]},{},[2]);

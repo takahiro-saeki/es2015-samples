@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div id="modal-flag"></div>
 
 <header class="nav-bar">
   <nav class="container">
@@ -22,27 +23,24 @@
       <section class="col-xs-2"></section>
 
       <section class="col-xs-8">
-        <div class="input-field col-xs-12">
-          <div id="name">
-            <label for="name" class="col-xs-2 form-label">名前</label>
-            <input type="text" class="col-xs-4 form-input" />
-          </div>
-
-          <div id="kana">
-            <label for="kana" class="col-xs-2 form-label">カナ</label>
-            <input type="text" class="col-xs-4 form-input"/>
-          </div>
+        <div id="name" class="input-field col-xs-6">
+          <label for="name" class="col-xs-4 form-label">名前</label>
+          <input type="text" class="col-xs-8 form-input" />
+        </div>
+        <div id="kana" class="input-field col-xs-6">
+          <label for="kana" class="col-xs-4 form-label">カナ</label>
+          <input type="text" accept=""class="col-xs-8 form-input"/>
         </div>
 
-        <div class="input-field col-xs-12">
-          <div id="tel">
-            <label for="tel" class="col-xs-2 form-label">電話番号</label>
-            <input type="tel" class="col-xs-4 form-input"/>
-          </div>
-          <div id="mail">
-            <label for="mail" class="col-xs-2 form-label">アドレス</label>
-            <input type="email" class="col-xs-4 form-input"/>
-          </div>
+
+        <div id="tel" class="input-field col-xs-6">
+          <label for="tel" class="col-xs-4 form-label">電話番号</label>
+          <input type="tel" class="col-xs-8 form-input"/>
+        </div>
+
+        <div id="mail" class="input-field col-xs-6">
+          <label for="mail" class="col-xs-4 form-label">アドレス</label>
+          <input type="email" class="col-xs-8 form-input"/>
         </div>
 
         <div class="input-field col-xs-12" id="postcode">

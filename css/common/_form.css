@@ -1,7 +1,7 @@
 .input-field {
-  @extend .clearfix;
   margin: 1rem auto;
   padding: 1rem 0;
+  position: relative;
 }
 
 .form-input {
