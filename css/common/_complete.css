@@ -1,6 +1,0 @@
-.complete-modal {
-  @extend .ModalTest;
-  size: 40% 40%;
-  background: #1de9b6;
-  color: #fff;
-}

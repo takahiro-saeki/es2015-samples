@@ -49,42 +49,9 @@
   @extend .ok;
 }
 
-.input-field {
-  button {
-    -webkit-appearance: none;
-    background: none;
-  }
-}
-
-.submit {
-  display: inline-block;
-  width: 49%;
-  background: #00bfa5;
-  appearance: none;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  padding: 1rem 0;
-}
-
-.reset {
-  @extend .submit;
-  background: #FF6B7A;
-}
-
 .modal-bg {
   size: 100% 100%;
   position: absolute;
   z-index: 10;
   background: color(#000 a(30%));
-}
-
-.errMsg {
-  position: absolute;
-  background: color(#000 a(70%));
-  color: #fff;
-  padding: 1rem;
-  left: 12rem;
-  border-radius: 1rem;
-  top: -4rem;
 }

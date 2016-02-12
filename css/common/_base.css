@@ -24,10 +24,3 @@ input:focus {
   border: 1px solid #ccc;
   outline: 0;
 }
-
-button[type="reset"],button[type="submit"] {
-  &:focus {
-    border: none!important;
-    outline: 0!important;
-  }
-}
