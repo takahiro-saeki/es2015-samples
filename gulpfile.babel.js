@@ -5,7 +5,6 @@ import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import ejs from 'gulp-ejs';
 import webserver from 'gulp-webserver';
-import prettify from 'gulp-jsbeautifier';
 import postcss from 'gulp-postcss';
 
 
@@ -20,19 +19,11 @@ gulp.task('css', () => {
     require('postcss-size'),
     require('postcss-media-minmax'),
     require('postcss-color-function')
-
   ];
 
   return gulp.src('./css/*.css')
   .pipe(postcss(processors))
   .pipe(gulp.dest('./template/css'))
-});
-
-//jsonをテンプレートフォルダに
-gulp.task('json', () => {
-  gulp.src('./data/**/*.json')
-    .pipe(prettify({json: {indent_size: 1, indent_char: '\t'}}))
-    .pipe(gulp.dest('./template/data'))
 });
 
 gulp.task('webserver', () => {
@@ -63,9 +54,9 @@ gulp.task('watch', () => {
 });
 
 gulp.task('ejs', () => {
-  gulp.src(["ejs/*.ejs",'!' + "ejs/**/_*.ejs"])
+  gulp.src(['ejs/*.ejs','!' + 'ejs/**/_*.ejs'])
   .pipe(ejs())
-  .pipe(gulp.dest("./template"))
+  .pipe(gulp.dest('./template'))
 })
 
-gulp.task('default', ['css', 'js', 'ejs', 'webserver', 'watch','json']);
+gulp.task('default', ['css', 'js', 'ejs', 'webserver', 'watch']);

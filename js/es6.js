@@ -12,9 +12,21 @@ template2(a,b) => {
 */
 let arrays = ['高坂穂乃果', '絢瀬 絵里', '南ことり', '園田海未', '星空凛', '西木野真姫', '東條希', '小泉花陽', '矢澤にこ'];
 for (let i in arrays) {
-   console.log(i);
+  if(i == -1) {
+    let arr = `postcss-${i}`
+    console.log(arr);
+  } else {
+    let arr = `postcss-${i},`
+     console.log(arr);
+  }
 }
 
 for (let i of arrays) {
-   console.log(i);
+  if(i === -1) {
+    let arr = `postcss-${i}`
+    console.log(arr);
+  } else {
+    let arr = `postcss-${i},`
+     console.log(arr);
+  }
 }

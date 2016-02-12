@@ -1,9 +1,8 @@
-import api from './api';
 import form from './form';
 import modal from './modal';
-import es6 from './es6.js';
+import es6 from './es6';
 
-let modalText = {
+const modalText = {
   title: 'モーダルタイトル',
   text: 'ここにモーダルに挿入する文章を入れます。',
   yes: 'チェックする',
@@ -14,6 +13,8 @@ let m = modalText;
 let Modal = new modal('.submit');
 Modal.show(m.title, m.text, m.yes, m.no);
 Modal.ok();
+Modal.ng();
+Modal.reset();
 
 let nameInValid = new form('#name');
 nameInValid.maxNum(4);

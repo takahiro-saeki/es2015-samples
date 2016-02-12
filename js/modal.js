@@ -2,11 +2,13 @@ export default class modal {
   constructor(el) {
     this.$el = $(el);
     this.$modalFlag = $('#modal-flag');
+    this.$body = $(document.body);
+    this.$formInput = $('.form-input');
   }
 
   show(title, msg, yes = 'はい', no = 'いいえ') {
     this.$el.on('click', () => {
-      let errFlag = $('body').find('.errMsg').length;
+      let errFlag = this.$body.find('.errMsg').length;
       if (!errFlag) {
         let element =
         `<main class="ModalTest">
@@ -17,7 +19,7 @@ export default class modal {
         <buttom class="ng">${ no }</buttom>
         </section>
         </main>`;
-        $('body').append(element);
+        this.$body.append(element);
         this.$modalFlag.addClass('modal-bg');
       } else {
         document.querySelector('.error').focus();
@@ -27,9 +29,25 @@ export default class modal {
   }
 
   ok() {
-    $(document).on('click', '.ok', () => {
-        document.querySelector('.ModalTest').remove();
-        this.$modalFlag.removeClass('modal-bg');
-      })
-    }
+    this.$body.on('click', '.ok', () => {
+      document.querySelector('.ModalTest').remove();
+      this.$modalFlag.removeClass('modal-bg');
+      this.$formInput.val('');
+    })
   }
+
+  ng() {
+    this.$body.on('click', '.ng', () => {
+      document.querySelector('.ModalTest').remove();
+      this.$modalFlag.removeClass('modal-bg');
+    })
+  }
+
+  reset() {
+    $('.reset').on('click', () => {
+      this.$formInput.val('');
+      this.$body.find('.form-input').removeClass('error');
+      this.$body.find('.errMsg').remove();
+    });
+  }
+}
